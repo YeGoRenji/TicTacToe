@@ -38,7 +38,7 @@ function drawArr() {
 }
 
 function cellEmpty(i, j) {
-  if (arr[j][i] != 2 && arr[j][i] != 3) return true;
+  if (arr[j][i] != 1 && arr[j][i] != 2) return true;
   return false;
 }
 function hoverSymbol() {
@@ -54,7 +54,12 @@ function hoverSymbol() {
         break;
     }
 }
+function isDraw() {
+  for (let i = 0; i < 3; i++)
+    for (let j = 0; j < 3; j++) if (cellEmpty(i, j)) return false;
 
+  return true;
+}
 function someoneWon() {
   for (let i = 0; i < 3; i++) {
     if (arr[i][0] === arr[i][1] && arr[i][1] === arr[i][2])
@@ -97,6 +102,11 @@ function draw() {
     strokeWeight(2);
     line(0, (i * height) / 3, width, (i * height) / 3);
     line((i * width) / 3, 0, (i * width) / 3, height);
+  }
+  if (isDraw()) {
+    alert("Its a Draw !");
+
+    remove();
   }
   if (someoneWon()[0]) {
     alert("Player " + (someoneWon()[1] === 1 ? "X" : "O") + " won !");
