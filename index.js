@@ -85,6 +85,16 @@ function mouseReleased(event) {
     arr[floor((mouseY * 3) / height)][floor((mouseX * 3) / width)] =
       symbolTurn === "X" ? 1 : 2;
 
+    if (someoneWon()[0]) {
+      alert("Player " + (someoneWon()[1] === 1 ? "X" : "O") + " won !");
+
+      remove();
+    }
+    if (isDraw()) {
+      alert("Its a Draw !");
+
+      remove();
+    }
     symbolTurn = symbolTurn === "X" ? "O" : "X";
   }
 }
@@ -102,15 +112,5 @@ function draw() {
     strokeWeight(2);
     line(0, (i * height) / 3, width, (i * height) / 3);
     line((i * width) / 3, 0, (i * width) / 3, height);
-  }
-  if (isDraw()) {
-    alert("Its a Draw !");
-
-    remove();
-  }
-  if (someoneWon()[0]) {
-    alert("Player " + (someoneWon()[1] === 1 ? "X" : "O") + " won !");
-
-    remove();
   }
 }
