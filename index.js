@@ -89,11 +89,13 @@ function mouseReleased(event) {
       alert("Player " + (someoneWon()[1] === 1 ? "X" : "O") + " won !");
 
       remove();
+      return;
     }
     if (isDraw()) {
       alert("Its a Draw !");
 
       remove();
+      return;
     }
     symbolTurn = symbolTurn === "X" ? "O" : "X";
   }
